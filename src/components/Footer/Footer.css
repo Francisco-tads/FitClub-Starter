@@ -21,7 +21,19 @@
   gap: 4rem;
 }
 
-.social-links > img {
+.social-links > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.social-links > a:hover {
+  transform: scale(1.1);
+}
+
+.social-links > a > img,
+.social-links > a > svg {
   width: 2rem;
   height: 2rem;
   cursor: pointer;
