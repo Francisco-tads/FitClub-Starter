@@ -1,6 +1,8 @@
 import React from "react";
+import { useState } from "react";
 import Header from "../Header/Header";
 import "./Hero.css";
+import ContactForm from "../ContactForm/ContactForm";
 import hero_image from "../../assets/hero_image1.png";
 import hero_image_back from "../../assets/hero_image_back.png";
 import Heart from "../../assets/heart.png";
@@ -10,8 +12,15 @@ import { motion } from "framer-motion";
 const Hero = () => {
     const transition = { type: "spring", duration: 3 };
     const mobile = window.innerWidth <= 768 ? true : false;
+    const [showContactForm, setShowContactForm] = useState(false);
+
+    const handleEntrarClick = () => {
+        setShowContactForm(true);
+    };
+
     return (
-        <div className="hero" id="home">
+        <>
+            <div className="hero" id="home">
             <ddiv className="blur hero-blur"></ddiv>
             <div className="left-h">
                 <Header />
@@ -72,7 +81,7 @@ const Hero = () => {
                 </div>
             </div>
             <div className="right-h">
-                <button className='btn'>Entrar</button>
+                <button className='btn' onClick={handleEntrarClick}>Entrar</button>
 
                 < motion.div
                     initial={{ right: "-1rem" }}
@@ -107,7 +116,12 @@ const Hero = () => {
                 </motion.div>
 
             </div>
-        </div>
+            </div>
+            <ContactForm 
+                isOpen={showContactForm} 
+                onClose={() => setShowContactForm(false)} 
+            />
+        </>
     );
 };
 
